@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #navbar {
+            background-color: #f8f9fa;
+            padding: 10px 0;
+        }
+
+        #content {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Data Transfer</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="danhsachsanpham.html">Danh Sách Sản Phẩm</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">WebRoot</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="content" class="my-5">
+            <h1 class="text-center mt-3 mb-5">Bài Tập 7c - Truyền Nhận Dữ Liệu</h1>
+            <div class="row">
+                <div class="col-md-4 col-sm-12 mb-4">
+                    <h5 class="card-title">Thông tin cá nhân</h5>
+                    <ul>
+                        <li><span class="fw-bold">Họ và tên:</span> Nguyễn Hoàng Hảo</li>
+                        <li><span class="fw-bold">MSSV:</span> 21810206</li>
+                        <li><span class="fw-bold">Email:</span> 21810206@student.hcmus.edu.vn</li>
+                    </ul>
+                    <p class="card-text" id="browserTime"><small class="text-body-secondary"></small></p>
+                    <?php
+                        date_default_timezone_set('Asia/Ho_Chi_Minh');
+                        $currentDateTime = date('Y/m/d H:i:s');
+                        echo "Host time (PHP): " . $currentDateTime;
+                    ?>
+                </div>
+                <div class="col-md-8 col-sm-12">
+                    <h5 class="text-center">Danh sách sản phẩm</h5>
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action">Giày bóng đá Nike</a>
+                        <a href="#" class="list-group-item list-group-item-action">Giày bóng đá Adidas</a>
+                        <a href="#" class="list-group-item list-group-item-action">Giày bóng đá Puma</a>
+                        <a href="#" class="list-group-item list-group-item-action">Giày bóng đá Mizuno</a>
+                        <a href="#" class="list-group-item list-group-item-action">Giày bóng đá Kamito</a>
+                        <a href="#" class="list-group-item list-group-item-action">Giày bóng đá Zocker</a>
+                        <a href="#" class="list-group-item list-group-item-action">Giày bóng đá Ascis</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        function updateDateTime() {
+            const now = new Date();
+            const day = String(now.getDate()).padStart(2, '0'); 
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const year = now.getFullYear();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const dateTimeString = `${year}/${month}/${day} ${hours}:${minutes}:${seconds}`;
+            document.getElementById('browserTime').textContent = "Browser time: " + dateTimeString;
+        }
+
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+    </script>
+</body>
+</html>
